@@ -1,0 +1,145 @@
+{
+  "schema": "shuyeai.plugin-catalog/v1",
+  "schemaVersion": 1,
+  "plugins": [
+    {
+      "schema": "shuyeai.plugin/v1",
+      "id": "remote-hello",
+      "name": "远程问候（示例）",
+      "description": "第三方远程插件示例：从市场源下载 entry 资产，经 SHA-256 校验后在沙箱中运行。可托管到 GitHub Pages 作为开源市场模板。",
+      "category": "示例",
+      "icon": "✦",
+      "featured": false,
+      "version": "1.0.0",
+      "release": {
+        "version": "1.0.0",
+        "channel": "stable"
+      },
+      "repository": "https://github.com/mibao9752-beep/shuye-remote-market",
+      "license": "MIT",
+      "authors": [
+        "Remote market contributors"
+      ],
+      "copyright": "Copyright (c) 2026 Remote market contributors",
+      "platforms": [
+        "web",
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "permissions": {
+        "networkHosts": [
+          "mibao9752-beep.github.io"
+        ],
+        "filesystem": [],
+        "dataSpaces": [],
+        "modelAccess": false,
+        "secondBrain": false,
+        "aiControl": false
+      },
+      "containsNativeCode": false,
+      "externalDependencies": [],
+      "integrationMode": "user-local-install",
+      "resourceTypes": [
+        "code"
+      ],
+      "resourceLicenses": [],
+      "checksumAlgorithm": "SHA-256",
+      "toolDefinition": {
+        "schema": "shuyeai.tool/v1",
+        "family": "demo.remote",
+        "purpose": "演示第三方远程插件的下载、校验与沙箱运行。",
+        "forms": [
+          "transformation"
+        ],
+        "inputs": [
+          {
+            "id": "text",
+            "type": "text/plain",
+            "required": true
+          }
+        ],
+        "outputs": [
+          {
+            "id": "greeting",
+            "type": "text/plain",
+            "required": true
+          }
+        ],
+        "workflow": [
+          {
+            "id": "install",
+            "title": "从市场源下载并校验"
+          },
+          {
+            "id": "run",
+            "title": "在沙箱中生成问候"
+          }
+        ],
+        "components": {
+          "skills": [],
+          "mcpServers": [],
+          "ui": [
+            {
+              "id": "hello-workspace",
+              "source": "third-party",
+              "entry": "runner:remote-hello",
+              "repository": "https://github.com/mibao9752-beep/shuye-remote-market",
+              "license": "MIT"
+            }
+          ],
+          "hooks": [],
+          "assets": [
+            {
+              "id": "hello-entry",
+              "source": "third-party",
+              "entry": "https://mibao9752-beep.github.io/shuye-remote-market/remote-hello/entry.js",
+              "repository": "https://github.com/mibao9752-beep/shuye-remote-market",
+              "license": "MIT"
+            }
+          ]
+        },
+        "hostCapabilities": [],
+        "verification": [
+          {
+            "id": "integrity",
+            "title": "SHA-256 完整性校验",
+            "required": true
+          },
+          {
+            "id": "sandbox",
+            "title": "沙箱隔离运行",
+            "required": true
+          }
+        ],
+        "lifecycle": {
+          "stoppable": true,
+          "resumable": false,
+          "persistence": "installed-local",
+          "updatePolicy": "review-required",
+          "rollbackPolicy": "optional"
+        },
+        "ownership": {
+          "product": "open-source-adapter",
+          "experience": "shuye-original",
+          "implementation": "third-party",
+          "evidence": "https://github.com/mibao9752-beep/shuye-remote-market"
+        }
+      },
+      "assets": [
+        {
+          "url": "https://mibao9752-beep.github.io/shuye-remote-market/remote-hello/entry.js",
+          "kind": "entry",
+          "sha256": "f6dcc030cb32a9013522c9b1280d36a2f4ffd5610bf6a95cc7790d310f5f13ec",
+          "bytes": 101
+        },
+        {
+          "url": "https://mibao9752-beep.github.io/shuye-remote-market/remote-hello/LICENSE.txt",
+          "kind": "license",
+          "sha256": "4015b5e0d93ce22e0e32812e97aa59d1ccbfaac24cb36bee5818c5a0214ac647",
+          "bytes": 1082
+        }
+      ]
+    }
+  ]
+}
